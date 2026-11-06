@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquenix Client İndirme Merkezi</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #121212; color: #fff; text-align: center; padding: 50px; }
+        .download-btn { background: #007bff; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; margin-top: 20px; }
+        .timer { font-size: 20px; color: #ffcc00; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+    <h1>Aquenix Client İndirme</h1>
+    <p>Dosyanız hazırlanıyor, lütfen bekleyin...</p>
+
+    <div class="timer" id="timer">Kalan süre: <span id="count">5</span> sn</div>
+    <a href="https://www.mediafire.com" id="dl-link" class="download-btn" style="display:none;" target="_blank">DOSYAYI İNDİR</a>
+
+    <script>
+        let timeLeft = 5;
+        let timer = setInterval(function(){
+            timeLeft--;
+            document.getElementById("count").textContent = timeLeft;
+            if(timeLeft <= 0){
+                clearInterval(timer);
+                document.getElementById("timer").style.display = "none";
+                document.getElementById("dl-link").style.display = "inline-block";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
+
