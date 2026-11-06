@@ -1,36 +1,150 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aquenix Client İndirme Merkezi</title>
+    <title>Aquenix Client - İndirme Merkezi</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #121212; color: #fff; text-align: center; padding: 50px; }
-        .download-btn { background: #007bff; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; margin-top: 20px; }
-        .timer { font-size: 20px; color: #ffcc00; margin-top: 15px; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0d0f12;
+            color: #e0e6ed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 32px 24px;
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(0, 123, 255, 0.15);
+            color: #388bfd;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        p.subtitle {
+            color: #8b949e;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .info-box {
+            background: #21262d;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-around;
+            font-size: 13px;
+            color: #c9d1d9;
+        }
+
+        .info-item span {
+            display: block;
+            color: #8b949e;
+            font-size: 11px;
+            margin-bottom: 2px;
+        }
+
+        .timer-container {
+            margin: 20px 0;
+        }
+
+        .timer-text {
+            font-size: 14px;
+            color: #8b949e;
+            margin-bottom: 8px;
+        }
+
+        .seconds {
+            font-size: 32px;
+            font-weight: bold;
+            color: #58a6ff;
+        }
+
+        .download-btn {
+            display: none;
+            width: 100%;
+            background: #238636;
+            color: #ffffff;
+            padding: 14px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background 0.2s ease;
+            box-shadow: 0 4px 12px rgba(35, 134, 54, 0.3);
+        }
+
+        .download-btn:hover {
+            background: #2ea043;
+        }
     </style>
 </head>
 <body>
 
-    <h1>Aquenix Client İndirme</h1>
-    <p>Dosyanız hazırlanıyor, lütfen bekleyin...</p>
+    <div class="card">
+        <span class="badge">Aquenix Hub</span>
+        <h1>Aquenix Client</h1>
+        <p class="subtitle">Güvenli ve hızlı indirme bağlantısı</p>
 
-    <div class="timer" id="timer">Kalan süre: <span id="count">5</span> sn</div>
-    <a href="https://www.mediafire.com" id="dl-link" class="download-btn" style="display:none;" target="_blank">DOSYAYI İNDİR</a>
+        <div class="info-box">
+            <div class="info-item"><span>SÜRÜM</span>v1.0</div>
+            <div class="info-item"><span>DURUM</span>Aktif</div>
+            <div class="info-item"><span>BOYUT</span>-- MB</div>
+        </div>
+
+        <div id="timer-box" class="timer-container">
+            <div class="timer-text">İndirme bağlantısı hazırlanıyor...</div>
+            <div class="seconds"><span id="count">5</span>s</div>
+        </div>
+
+        <a href="#" id="dl-link" class="download-btn" target="_blank">Dosyayı İndir</a>
+    </div>
 
     <script>
         let timeLeft = 5;
-        let timer = setInterval(function(){
+        const timer = setInterval(function(){
             timeLeft--;
             document.getElementById("count").textContent = timeLeft;
             if(timeLeft <= 0){
                 clearInterval(timer);
-                document.getElementById("timer").style.display = "none";
-                document.getElementById("dl-link").style.display = "inline-block";
+                document.getElementById("timer-box").style.display = "none";
+                document.getElementById("dl-link").style.display = "block";
             }
         }, 1000);
     </script>
 
 </body>
 </html>
-
